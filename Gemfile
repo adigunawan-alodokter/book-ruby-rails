@@ -28,7 +28,14 @@ gem 'mongoid', '~> 7.0'
 
 gem 'jwt'
 gem 'bcrypt','~> 3.1.7'
-gem 'swagger-docs'
+# Gemfile
+gem 'rswag-api'
+gem 'rswag-ui'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+end
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

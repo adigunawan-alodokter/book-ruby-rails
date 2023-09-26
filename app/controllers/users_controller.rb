@@ -9,15 +9,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user,status: :ok
+    render_response(@user,:ok)
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user,status: :created
+      render_response(@user,:ok)
     else
-      render json: {errors: @user.errors},status: :unprocessable_entity
+      render_response(@user,:unprocessable_entity,@user.errors)
     end
   end
 
@@ -34,7 +34,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    begin
+      @user.destroy
+      render_response(@user,:ok,"success deleted user")
+    rescue => e
+      render_response(@user,:unprocessable_entity,e.message)
+    end
   end
 
   private

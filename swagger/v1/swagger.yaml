@@ -1,0 +1,355 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  securitySchemes:
+    Bearer:
+      description: JWT key necessary to use API calls
+      type: apiKey
+      name: authorization
+      in: header
+security:
+- Bearer: []
+securityDefinitions:
+  Bearer:
+    description: "..."
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  "/auth/login":
+    post:
+      summary: User login
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: User logged in successfully
+        '401':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/auth/signup":
+    post:
+      summary: User signup
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: User signed up and logged in successfully
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+                username:
+                  type: string
+              required:
+              - email
+              - password
+              - name
+              - username
+  "/authors":
+    get:
+      summary: Retrieves a list of authors
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: List of authors retrieved successfully
+    post:
+      summary: Creates an author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '201':
+          description: Author created successfully
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                bio:
+                  type: string
+              required:
+              - name
+  "/authors/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves an author by ID
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: Author retrieved successfully
+        '404':
+          description: Author not found
+    put:
+      summary: Updates an author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '200':
+          description: Author updated successfully
+        '404':
+          description: Author not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                bio:
+                  type: string
+    delete:
+      summary: Deletes an author
+      tags:
+      - Authors
+      responses:
+        '204':
+          description: Author deleted successfully
+        '404':
+          description: Author not found
+  "/books":
+    get:
+      summary: Retrieves a list of books
+      tags:
+      - Books
+      responses:
+        '200':
+          description: List of books retrieved successfully
+    post:
+      summary: Creates a book
+      tags:
+      - Books
+      parameters: []
+      responses:
+        '201':
+          description: Book created successfully
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author_id:
+                  type: string
+              required:
+              - title
+              - author_id
+  "/books/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a book by ID
+      tags:
+      - Books
+      responses:
+        '200':
+          description: Book retrieved successfully
+        '404':
+          description: Book not found
+    put:
+      summary: Updates a book
+      tags:
+      - Books
+      parameters: []
+      responses:
+        '200':
+          description: Book updated successfully
+        '404':
+          description: Book not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author_id:
+                  type: string
+    delete:
+      summary: Deletes a book
+      tags:
+      - Books
+      responses:
+        '204':
+          description: Book deleted successfully
+        '404':
+          description: Book not found
+  "/users":
+    get:
+      summary: Retrieves a list of users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    email:
+                      type: string
+                  required:
+                  - id
+                  - username
+                  - email
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+  "/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                required:
+                - id
+                - username
+                - email
+        '404':
+          description: user not found
+    put:
+      summary: Updates a user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: user updated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+    delete:
+      summary: Deletes a user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: user deleted
+        '404':
+          description: user not found
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: localhost:3000

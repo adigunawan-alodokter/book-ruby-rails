@@ -89,6 +89,7 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    diff-lcs (1.5.0)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -104,6 +105,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json-schema (3.0.0)
+      addressable (>= 2.8)
     jwt (2.7.1)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -132,7 +135,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
@@ -181,6 +184,33 @@ GEM
     reline (0.3.8)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
+    rswag-api (2.10.1)
+      railties (>= 3.1, < 7.1)
+    rswag-specs (2.10.1)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (>= 2.2, < 4.0)
+      railties (>= 3.1, < 7.1)
+      rspec-core (>= 2.14)
+    rswag-ui (2.10.1)
+      actionpack (>= 3.1, < 7.1)
+      railties (>= 3.1, < 7.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.12.0)
@@ -197,9 +227,6 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
-    swagger-docs (0.2.9)
-      activesupport (>= 3)
-      rails (>= 3)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -213,7 +240,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket (1.2.9)
+    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -235,10 +262,13 @@ DEPENDENCIES
   mongoid (~> 7.0)
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rspec-rails
+  rswag-api
+  rswag-specs
+  rswag-ui
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  swagger-docs
   turbo-rails
   tzinfo-data
   web-console

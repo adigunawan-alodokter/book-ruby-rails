@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
       def authenticate_request
         begin
           header = request.headers["Authorization"]
+          puts "------->"
+          puts header
           header = header.split(" ").last if header
           decode = jwt_decode(header)
           @curent_user = User.find(decode[:user_id])
