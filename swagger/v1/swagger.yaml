@@ -19,7 +19,7 @@ securityDefinitions:
     name: Authorization
     in: header
 paths:
-  "/auth/login":
+  "/api/auth/login":
     post:
       summary: User login
       tags:
@@ -43,7 +43,7 @@ paths:
               required:
               - email
               - password
-  "/auth/signup":
+  "/api/auth/signup":
     post:
       summary: User signup
       tags:
@@ -73,7 +73,7 @@ paths:
               - password
               - name
               - username
-  "/authors":
+  "/api/authors":
     get:
       summary: Retrieves a list of authors
       tags:
@@ -103,7 +103,7 @@ paths:
                   type: string
               required:
               - name
-  "/authors/{id}":
+  "/api/authors/{id}":
     parameters:
     - name: id
       in: path
@@ -148,7 +148,7 @@ paths:
           description: Author deleted successfully
         '404':
           description: Author not found
-  "/books":
+  "/api/books":
     get:
       summary: Retrieves a list of books
       tags:
@@ -179,7 +179,7 @@ paths:
               required:
               - title
               - author_id
-  "/books/{id}":
+  "/api/books/{id}":
     parameters:
     - name: id
       in: path
@@ -224,7 +224,7 @@ paths:
           description: Book deleted successfully
         '404':
           description: Book not found
-  "/users":
+  "/api/users":
     get:
       summary: Retrieves a list of users
       tags:
@@ -275,7 +275,7 @@ paths:
               - username
               - email
               - password
-  "/users/{id}":
+  "/api/users/{id}":
     parameters:
     - name: id
       in: path

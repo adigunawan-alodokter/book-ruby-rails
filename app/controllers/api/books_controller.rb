@@ -1,14 +1,11 @@
-require_relative '../../lib/response/base_response'
-class BooksController < ApplicationController
-  include BaseResponse
+class Api::BooksController < ApplicationController
     protect_from_forgery
-    skip_before_action :authenticate_request
+    # skip_before_action :authenticate_request
     before_action :set_book, only: [:show, :update, :destroy]
 
   def index
     begin
       @books = Book.all
-      # Buat array untuk menyimpan data buku beserta informasi penulis
       books_with_author = @books.map do |book|
         {
           id: book.id,

@@ -3,7 +3,7 @@
 require 'swagger_helper'
 
 describe 'Authentication API' do
-  path '/auth/login' do
+  path '/api/auth/login' do
     post 'User login' do
       tags 'Authentication'
       consumes 'application/json'
@@ -25,7 +25,7 @@ describe 'Authentication API' do
     end
   end
 
-  path '/auth/signup' do
+  path '/api/auth/signup' do
     post 'User signup' do
       tags 'Authentication'
       consumes 'application/json'

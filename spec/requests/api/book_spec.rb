@@ -3,7 +3,7 @@
 require 'swagger_helper'
 
 describe 'Books API' do
-  path '/books' do
+  path '/api/books' do
     get 'Retrieves a list of books' do
       tags 'Books'
       produces 'application/json'
@@ -33,7 +33,7 @@ describe 'Books API' do
     end
   end
 
-  path '/books/{id}' do
+  path '/api/books/{id}' do
     parameter name: :id, in: :path, type: :string
     get 'Retrieves a book by ID' do
       tags 'Books'

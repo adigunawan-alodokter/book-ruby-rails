@@ -3,7 +3,7 @@
 require 'swagger_helper'
 
 describe 'Authors API' do
-  path '/authors' do
+  path '/api/authors' do
     get 'Retrieves a list of authors' do
       tags 'Authors'
       produces 'application/json'
@@ -33,7 +33,7 @@ describe 'Authors API' do
     end
   end
 
-  path '/authors/{id}' do
+  path '/api/authors/{id}' do
     parameter name: :id, in: :path, type: :integer
     get 'Retrieves an author by ID' do
       tags 'Authors'

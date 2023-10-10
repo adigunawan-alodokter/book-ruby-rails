@@ -3,7 +3,7 @@
 require 'swagger_helper'
 
 describe 'Users API' do
-  path '/users' do
+  path '/api/users' do
     get 'Retrieves a list of users' do
       tags 'Users'
       produces 'application/json'
@@ -47,7 +47,7 @@ describe 'Users API' do
     end
   end
 
-  path '/users/{id}' do
+  path '/api/users/{id}' do
     parameter name: :id, in: :path, type: :integer
 
     get 'Retrieves a user' do

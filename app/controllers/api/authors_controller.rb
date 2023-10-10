@@ -1,11 +1,11 @@
-require_relative '../../lib/response/base_response'
-class AuthorsController < ApplicationController
-  include BaseResponse
+class Api::AuthorsController < ApplicationController
     protect_from_forgery
-    skip_before_action :authenticate_request
+    # skip_before_action :authenticate_request
     before_action :set_author, only: [:show, :update, :destroy]
 
     def index
+      puts "user controller:"
+      puts @curent_user.id
       @authors = Author.all
       render_response(@authors,:ok)
     end
